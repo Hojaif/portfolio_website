@@ -1,0 +1,26 @@
+2024/07/31-14:10:13.154 1d34 Creating DB C:\Users\mtaig\AppData\Local\Temp\flutter_tools.6894cbd0\flutter_tools_chrome_device.8af78eb1\Default\IndexedDB\https_www.youtube.com_0.indexeddb.leveldb since it was missing.
+2024/07/31-14:10:13.166 1d34 Reusing MANIFEST C:\Users\mtaig\AppData\Local\Temp\flutter_tools.6894cbd0\flutter_tools_chrome_device.8af78eb1\Default\IndexedDB\https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/07/31-14:30:50.477 1d34 Level-0 table #5: started
+2024/07/31-14:30:50.553 1d34 Level-0 table #5: 1394222 bytes OK
+2024/07/31-14:30:50.558 1d34 Delete type=0 #3
+2024/07/31-15:06:42.587 1d34 Level-0 table #7: started
+2024/07/31-15:06:42.844 1d34 Level-0 table #7: 1627300 bytes OK
+2024/07/31-15:06:42.890 1d34 Delete type=0 #4
+2024/07/31-15:06:58.740 1d34 Compacting 1@1 + 1@2 files
+2024/07/31-15:06:58.787 1d34 Generated table #8@1: 334 keys, 34835 bytes
+2024/07/31-15:06:58.788 1d34 Compacted 1@1 + 1@2 files => 34835 bytes
+2024/07/31-15:06:58.791 1d34 compacted to: files[ 0 0 1 0 0 0 0 ]
+2024/07/31-15:06:58.792 1d34 Delete type=2 #5
+2024/07/31-15:06:58.792 1d34 Delete type=2 #7
+2024/07/31-15:15:49.860 1d34 Level-0 table #10: started
+2024/07/31-15:15:49.884 1d34 Level-0 table #10: 962551 bytes OK
+2024/07/31-15:15:49.896 1d34 Delete type=0 #6
+2024/07/31-15:15:49.897 1d34 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2024/07/31-15:15:49.898 1d34 Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x09\x02\x1f\x03\x00`\xe6\x03\x81\x10yB\x00\x03\x00\x00\x00\x00\x00\x80G@' @ 13550 : 1
+2024/07/31-15:15:49.898 1d34 Compacting 1@1 + 1@2 files
+2024/07/31-15:15:49.905 1d34 Generated table #11@1: 315 keys, 65924 bytes
+2024/07/31-15:15:49.906 1d34 Compacted 1@1 + 1@2 files => 65924 bytes
+2024/07/31-15:15:49.911 1d34 compacted to: files[ 0 0 1 0 0 0 0 ]
+2024/07/31-15:15:49.911 1d34 Delete type=2 #8
+2024/07/31-15:15:49.911 1d34 Delete type=2 #10
+2024/07/31-15:15:49.913 1d34 Manual compaction at level-1 from '\x00\x09\x02\x1f\x03\x00`\xe6\x03\x81\x10yB\x00\x03\x00\x00\x00\x00\x00\x80G@' @ 13550 : 1 .. (end); will stop at (end)
