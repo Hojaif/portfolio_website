@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 
 import '../../../widgets/Responsive.dart';
 
-class Servies extends StatefulWidget {
-  const Servies({super.key});
+class Blogs extends StatefulWidget {
+  const Blogs({super.key});
 
   @override
-  State<Servies> createState() => _ServiesState();
+  State<Blogs> createState() => _BlogsState();
 }
 
-class _ServiesState extends State<Servies> {
+class _BlogsState extends State<Blogs> {
   @override
   Widget build(BuildContext context) {
     return const Responsive(

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:protfolioweb/src/presentation/views/TabBar/Blogs/Blogs.dart';
 import 'package:protfolioweb/src/presentation/views/TabBar/Contact/Contact.dart';
 import 'package:protfolioweb/src/presentation/views/TabBar/Dashboard/Componets/MuneButton.dart';
 import 'package:protfolioweb/src/presentation/views/TabBar/Dashboard/Dashbord.dart';
 import 'package:protfolioweb/src/presentation/views/TabBar/About/About.dart';
 import 'package:protfolioweb/src/presentation/views/TabBar/Project/Project.dart';
-import 'package:protfolioweb/src/presentation/views/TabBar/Servies/Servies.dart';
 import 'package:protfolioweb/src/presentation/widgets/CustomDrawer.dart';
 import 'package:protfolioweb/src/utils/Colors.dart';
 
@@ -41,8 +41,8 @@ class _HomescreenState extends State<Homescreen> {
       const Dashbord(),
       const About(),
       Project(),
-      const Servies(),
-      
+      // This screen Call Blogs Screen
+      const Blogs(),
       const Contact()
     ];
     var size = MediaQuery.sizeOf(context);
@@ -128,6 +128,7 @@ class _HomescreenState extends State<Homescreen> {
               ],
             )
           else
+          // MenuButton 
             Padding(
               padding: const EdgeInsets.only(top: 8, right: 8),
               child: MenuButton(
@@ -160,7 +161,7 @@ class _HomescreenState extends State<Homescreen> {
       ),
     );
   }
-
+// MenuButton Fanction
   void _onDrawerItemTapped(int index) {
     Navigator.pop(context);
     _onItemTapped(index);

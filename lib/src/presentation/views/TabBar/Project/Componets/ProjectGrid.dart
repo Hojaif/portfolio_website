@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../../../../domain/Controller/ProjectController.dart';
 import '../../../../../domain/Model/Project_Model.dart';
 import '../../../../../utils/Colors.dart';
@@ -30,6 +29,7 @@ class ProjectGrid extends StatelessWidget {
                   Colors.pinkAccent,
                   Colors.blue,
                 ]),
+                // Product Image
                 image: DecorationImage(
                     image: AssetImage(projectList[index].image),
                     fit: BoxFit.cover),
@@ -55,32 +55,53 @@ class ProjectGrid extends StatelessWidget {
               borderRadius: BorderRadius.circular(30),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.end,
+                child: Column(
                   children: [
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Text(
+                        projectList[index].name,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall!
+                            .copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        IconButton(
+                        // Github Button
+                        Row(
+                          children: [
+                            IconButton(
+                                onPressed: () {
+                                  launchUrl(Uri.parse(projectList[index].link));
+                                },
+                                icon: SvgPicture.asset(
+                                    'assets/icons/github.svg')),
+                          ],
+                        ),
+                        const Spacer(),
+                        // More Button
+                        TextButton(
                             onPressed: () {
                               launchUrl(Uri.parse(projectList[index].link));
                             },
-                            icon: SvgPicture.asset('assets/icons/github.svg')),
+                            child: const Text(
+                              'Read More>>',
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  color: Colors.amber,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 10),
+                            ))
                       ],
                     ),
-                    const Spacer(),
-                    TextButton(
-                        onPressed: () {
-                          launchUrl(Uri.parse(projectList[index].link));
-                        },
-                        child: const Text(
-                          'Read More>>',
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                              color: Colors.amber,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 10),
-                        ))
                   ],
                 ),
               ),
