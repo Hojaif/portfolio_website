@@ -48,7 +48,7 @@ class AboutText extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         const ReadMoreText(
-          "Flutter skills to achieve positive results for your previous employers. Flutter skills to achieve positive results for your previous employers. For example, you can mention, I have previously worked on seven Flutter projects and launched three apps. Two apps have over 20,000 downloads with 1000+ five-star ratings from happy users. This article is based on information available at the time of writing, which may change at any time. Indeed does not guarantee that this information is always up-to-date. Please seek out a local resource for the latest on this topic.",
+          "I am a Flutter developer, I am skilled in cross platform app design and development. I have experience in developing apps successfully in various projects. I am good at finding optimal solutions and building smooth, fast and user-friendly apps using Flutter framework.I am also skilled in creating beautiful smooth, fast and user-friendly websites with Flutter.",
           trimLines: 4,
           trimMode: TrimMode.Line,
           trimCollapsedText: 'Read more',

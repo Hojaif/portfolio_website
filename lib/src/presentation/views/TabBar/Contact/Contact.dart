@@ -11,98 +11,94 @@ class Contact extends StatefulWidget {
 }
 
 class _ContactState extends State<Contact> {
-  final TextEditingController emailController1 = TextEditingController();
-  final TextEditingController nameController1 = TextEditingController();
-  final TextEditingController phoneController1 = TextEditingController();
-  final TextEditingController messageController1 = TextEditingController();
-  final TextEditingController emailController2 = TextEditingController();
-  final TextEditingController nameController2 = TextEditingController();
-  final TextEditingController phoneController2 = TextEditingController();
-  final TextEditingController messageController2 = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController messageController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    nameController.dispose();
+    phoneController.dispose();
+    messageController.dispose();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.sizeOf(context);
+    final double paddingValue = !Responsive.isMobile(context) &&
+            !Responsive.isLargeMobile(context) &&
+            !Responsive.isExtraLargeScreen(context)
+        ? 100
+        : 16;
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(100),
+          padding:  EdgeInsets.all(paddingValue),
           child: Column(
             children: [
               const Center(
-                  child: Text(
-                "Contact Me",
-                style: TextStyle(
+                child: Text(
+                  "Contact Me",
+                  style: TextStyle(
                     fontSize: 24,
                     color: Colors.white,
-                    fontWeight: FontWeight.w600),
-              )),
-              const SizedBox(
-                height: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ),
+              const SizedBox(height: 20),
               Responsive(
                 desktop: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ContactFrom(
-                      emailController1: emailController1,
-                      nameController1: nameController1,
-                      phoneController1: phoneController1,
-                      messageController1: messageController1),
-                  const SizedBox(
-                    width: 16,
-                  ),
-                  const ContactDetiles(),
-                ],
-              ),
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: ContactFrom(
+                      
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    const Expanded(child: ContactDetiles()),
+                  ],
+                ),
                 largeMobile: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const ContactDetiles(),
-                  const SizedBox(
-                    width: 16,
-                  ),
-                  ContactFrom(
-                      emailController1: emailController1,
-                      nameController1: nameController1,
-                      phoneController1: phoneController1,
-                      messageController1: messageController1),
-                  
-                  
-                ],
-              ), 
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const ContactDetiles(),
+                    const SizedBox(height: 16),
+                    ContactFrom(
+                     
+                    ),
+                  ],
+                ),
                 mobile: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const ContactDetiles(),
-                  const SizedBox(
-                    width: 16,
-                  ),
-                  ContactFrom(
-                      emailController1: emailController1,
-                      nameController1: nameController1,
-                      phoneController1: phoneController1,
-                      messageController1: messageController1),
-                  
-                  
-                ],
-              ),
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const ContactDetiles(),
+                    const SizedBox(height: 16),
+                    ContactFrom(
+                 
+                    ),
+                  ],
+                ),
                 tablet: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ContactFrom(
-                      emailController1: emailController1,
-                      nameController1: nameController1,
-                      phoneController1: phoneController1,
-                      messageController1: messageController1),
-                  const SizedBox(
-                    width: 16,
-                  ),
-                  const ContactDetiles(),
-                ],
-              ),)
-              
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: ContactFrom(
+                    
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    const Expanded(child: ContactDetiles()),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

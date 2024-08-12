@@ -41,56 +41,71 @@ class _AboutState extends State<About> with SingleTickerProviderStateMixin {
         : 16;
     return Scaffold(
       body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(paddingValue),
-          child: Responsive(
-            desktop: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                AnimatedImageContainer(
-                  animationController: _animationController,
-                  height: 350,
-                  width: 300,
-                ),
-                const SizedBox(width: 20),
-                const Expanded(child: AboutText()),
-              ],
+        child: Column(
+          children: [
+            const Center(
+                child: Text(
+              "Contact Me",
+              style: TextStyle(
+                  fontSize: 24,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600),
+            )),
+            const SizedBox(
+              height: 20,
             ),
-            largeMobile: Column(
-              children: [
-                AnimatedImageContainer(
-                  animationController: _animationController,
-                  height: 250,
-                  width: 200,
+            Padding(
+              padding: EdgeInsets.all(paddingValue),
+              child: Responsive(
+                desktop: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    AnimatedImageContainer(
+                      animationController: _animationController,
+                      height: 350,
+                      width: 300,
+                    ),
+                    const SizedBox(width: 20),
+                    const Expanded(child: AboutText()),
+                  ],
                 ),
-                const SizedBox(height: 20),
-                const AboutText(),
-              ],
-            ),
-            mobile: Column(
-              children: [
-                AnimatedImageContainer(
-                  animationController: _animationController,
-                  height: 250,
-                  width: 200,
+                largeMobile: Column(
+                  children: [
+                    AnimatedImageContainer(
+                      animationController: _animationController,
+                      height: 250,
+                      width: 200,
+                    ),
+                    const SizedBox(height: 20),
+                    const AboutText(),
+                  ],
                 ),
-                const SizedBox(height: 20),
-                const AboutText(),
-              ],
-            ),
-            tablet: Column(
-              children: [
-                AnimatedImageContainer(
-                  animationController: _animationController,
-                  height: 270,
-                  width: 220,
+                mobile: Column(
+                  children: [
+                    AnimatedImageContainer(
+                      animationController: _animationController,
+                      height: 250,
+                      width: 200,
+                    ),
+                    const SizedBox(height: 20),
+                    const AboutText(),
+                  ],
                 ),
-                const SizedBox(height: 20),
-                const AboutText(),
-              ],
+                tablet: Column(
+                  children: [
+                    AnimatedImageContainer(
+                      animationController: _animationController,
+                      height: 270,
+                      width: 220,
+                    ),
+                    const SizedBox(height: 20),
+                    const AboutText(),
+                  ],
+                ),
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
@@ -116,7 +131,7 @@ class AnimatedImageContainer extends StatelessWidget {
       builder: (context, child) {
         final value = _animationController.value;
         return Transform.translate(
-          offset: Offset(0, 2 * value), // Move the container up and down
+          offset: Offset(0, 2 * value),
           child: Container(
             height: height,
             width: width,
@@ -124,7 +139,11 @@ class AnimatedImageContainer extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border.all(width: 2),
               gradient: SweepGradient(
-                colors: const [Colors.pinkAccent, Colors.blue],
+                colors: const [
+                  Colors.pinkAccent,
+                  Colors.blue,
+                  bgColor,
+                ],
                 transform: GradientRotation(_animationController.value * 6),
               ),
             ),

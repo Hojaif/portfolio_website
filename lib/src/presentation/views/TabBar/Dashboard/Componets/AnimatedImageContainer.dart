@@ -65,22 +65,27 @@ class AnimatedImageContainerState extends State<AnimatedImageContainer>
                 color: bgColor,
                 shape: BoxShape.circle
               ),
-              child: ClipOval(
-                child: Image.network(
-                  'https://i.postimg.cc/9MPK7vQv/Whats-App-Image-2024-06-11-at-10-21-56-PM-removebg-preview-1.png',
-                  height: 20,
-                  /*Responsive.isLargeMobile(context)
-                      ? MediaQuery.sizeOf(context).width * 0.2
-                      : Responsive.isTablet(context)
-                          ? MediaQuery.sizeOf(context).width * 0.2
-                          : 200,*/
-                  width:20
-                  /* Responsive.isLargeMobile(context)
-                      ? MediaQuery.sizeOf(context).width * 0.2
-                      : Responsive.isTablet(context)
-                          ? MediaQuery.sizeOf(context).width * 0.14
-                          : 200,
-                  fit: BoxFit.cover,*/
+              child: SizedBox(
+                height: 0,
+                width: 0,
+                child: ClipOval(
+                  
+                  child: Image.network(
+                    'https://i.postimg.cc/9MPK7vQv/Whats-App-Image-2024-06-11-at-10-21-56-PM-removebg-preview-1.png',
+                    // height: 20,
+                    /*Responsive.isLargeMobile(context)
+                        ? MediaQuery.sizeOf(context).width * 0.2
+                        : Responsive.isTablet(context)
+                            ? MediaQuery.sizeOf(context).width * 0.2
+                            : 200,*/
+                    // width:20
+                    /* Responsive.isLargeMobile(context)
+                        ? MediaQuery.sizeOf(context).width * 0.2
+                        : Responsive.isTablet(context)
+                            ? MediaQuery.sizeOf(context).width * 0.14
+                            : 200,
+                    fit: BoxFit.cover,*/
+                  ),
                 ),
               ),
             )

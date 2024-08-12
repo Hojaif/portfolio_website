@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:protfolioweb/src/presentation/views/TabBar/Project/Componets/Dialog.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../../domain/Controller/ProjectController.dart';
 import '../../../../../domain/Model/Project_Model.dart';
@@ -11,6 +12,18 @@ class ProjectGrid extends StatelessWidget {
   final double ratio;
   ProjectGrid({super.key, this.crossAxisCount = 3, this.ratio = 1.3});
   final controller = Get.put(ProjectController());
+  void showAnimatedDialog(BuildContext context, int index) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AnimatedDialog(
+          name: projectList[index].name,
+          dicrption: projectList[index].description,
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -50,27 +63,14 @@ class ProjectGrid extends StatelessWidget {
                 controller.onHover(index, value);
               },
               onTap: () {
-                // ImageViewer(context,projectList[index].image);
+                showImageViewer(context, projectList[index].image);
               },
               borderRadius: BorderRadius.circular(30),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Text(
-                        projectList[index].name,
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineSmall!
-                            .copyWith(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
+                    const Spacer(),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -83,14 +83,16 @@ class ProjectGrid extends StatelessWidget {
                                   launchUrl(Uri.parse(projectList[index].link));
                                 },
                                 icon: SvgPicture.asset(
-                                    'assets/icons/github.svg')),
+                                  'assets/icons/github.svg',
+                                  color: Colors.black,
+                                )),
                           ],
                         ),
                         const Spacer(),
                         // More Button
                         TextButton(
                             onPressed: () {
-                              launchUrl(Uri.parse(projectList[index].link));
+                              showAnimatedDialog(context, index);
                             },
                             child: const Text(
                               'Read More>>',
@@ -105,74 +107,27 @@ class ProjectGrid extends StatelessWidget {
                   ],
                 ),
               ),
-              /*   AnimatedContainer(
-                padding: const EdgeInsets.only(
-                    left: defaultPadding,
-                    right: defaultPadding,
-                    top: defaultPadding),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30), color: bgColor),
-                duration: const Duration(milliseconds: 500),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Align(
-                    //   alignment: Alignment.topCenter,
-                    //   child: Text(
-                    //     projectList[index].name,
-                    //     style: Theme.of(context)
-                    //         .textTheme
-                    //         .headlineSmall!
-                    //         .copyWith(
-                    //             color: Colors.white,
-                    //             fontWeight: FontWeight.bold),
-                    //     maxLines: 1,
-                    //     overflow: TextOverflow.ellipsis,
-                    //   ),
-                    // ),
-                    Responsive.isMobile(context)
-                        ? const SizedBox(
-                            height: defaultPadding / 2,
-                          )
-                        : const SizedBox(
-                            height: defaultPadding,
-                          ),
-                    // Text(projectList[index].description,style: const TextStyle(color: Colors.grey,height: 1.5),maxLines: size.width>700 && size.width< 750 ? 3:  size.width<470  ? 2  : size.width>600 && size.width<700 ?     6:  size.width>900 && size.width <1060 ? 6: 4 ,overflow: TextOverflow.ellipsis,),
-                    const Spacer(),
-                    Row(
-                      children: [
-                        Row(
-                          children: [
-                            IconButton(
-                                onPressed: () {
-                                  launchUrl(Uri.parse(projectList[index].link));
-                                },
-                                icon: SvgPicture.asset(
-                                    'assets/icons/github.svg')),
-                          ],
-                        ),
-                        const Spacer(),
-                        TextButton(
-                            onPressed: () {
-                              launchUrl(Uri.parse(projectList[index].link));
-                            },
-                            child: const Text(
-                              'Read More>>',
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  color: Colors.amber,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 10),
-                            ))
-                      ],
-                    ),
-                    const SizedBox(
-                      height: defaultPadding / 2,
-                    ),
-                  ],
-                ),
-              ),*/
             )));
+      },
+    );
+  }
+
+  void showImageViewer(BuildContext context, String imagePath) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          backgroundColor: Colors.transparent,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              image: DecorationImage(
+                image: AssetImage(imagePath),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        );
       },
     );
   }
